@@ -12,6 +12,12 @@ let model = {
             is_active: 1
         };
         return db.query("INSERT INTO users SET ?", [data], cb);
+    },
+    findOne: (username, cb) => {
+        return db.query("SELECT * FROM users WHERE username=? AND is_active=1", [username], cb);
+    },
+    findById: (id, cb) => {
+        return db.query("SELECT * FROM users WHERE id=? AND is_active=1", [id], cb);
     }
 }
 

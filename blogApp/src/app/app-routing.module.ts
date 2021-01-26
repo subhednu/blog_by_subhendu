@@ -6,13 +6,26 @@ import { DEFAULT_ROUTES } from './routes/default-layout-routes'
 import { BACKEND_ROUTES } from './routes/backend-layout-routes'
 
 const routes: Routes = [
+
   /**
-   * If path is blank then the default layout components will be called. But the routes will be chosen according
-   * to the children mentioned. The children here mentioned as 'DEFAULT_ROUTES' which has been defined in 
-   * './routes/default-layout-routes'
+   * Path: If reference URL is blanks. Example - http://localhost:4200
+   * Component: DefaultLayoutComponent will be called which reseides in /app/layouts/default-layout/default-layout.component
+   * Routes: The children attribute pointing to DEFAULT_ROUTES. Which resides in /app/routes/default-layout-routes
    */
   {path:'', component: DefaultLayoutComponent, children: DEFAULT_ROUTES},
+
+  /**
+   * Path: If reference URL is backend. Example - http://localhost:4200/backend/
+   * Component: BackendLayoutComponent wil be called which reseides in /app/layouts/backend-layout/backend-layout.component
+   * Routes: The children attribute pointing to BACKEND_ROUTES. Which resides in /app/routes/backend-layout-routes
+   */
+
   {path:'backend', component: BackendLayoutComponent, children: BACKEND_ROUTES},
+
+  /**
+   * If no path matched.
+   */
+
   {path:'**', redirectTo:'404'}
 ];
 
